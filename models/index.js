@@ -27,4 +27,4 @@ const dataschema = new mongoose.Schema({
 
 })
 
-module.exports = mongoose.model('imdb',dataschema);
+module.exports = mongoose.model('host',dataschema);

@@ -1,12 +1,20 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const mongoString = process.env.DATABASE_URL;
 const app = express();
- const routes = require('./routes');
+ //const routes = require('./routes');
 app.use(express.json());
-app.use('/api',routes);
+app.use(cors({
+    origin:"*"}));
+app.use("/searchbyquery",searchbyqueryrouter);
+app.use("/getbyid",getbyidrouter);  
+app.use("/putbyid",putbyidrouter);
+app.use("/deletebyid",deletebyidrouter);
+app.use("getbygenre",getbygenrerouter);
+
 mongoose.connect(mongoString);
  const database = mongoose.connection;
 
